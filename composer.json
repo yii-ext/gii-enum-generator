@@ -1,0 +1,17 @@
+{
+    "name": "yii-ext/gii-enum-generator",
+    "description": "Enum classes generator for gii",
+    "homepage": "https://github.com/yii-ext/gii-enum-generator/",
+    "type": "yii-extension",
+    "authors": [
+        {
+          "name": "Gladchenko Oleg",
+          "email": "glad.oleg@gmail.com"
+        },
+        {
+            "name": "Dmitry Semenov",
+            "email": "disemx@gmail.com",
+            "homepage": "http://disem.org/"
+        }
+    ]
+}
