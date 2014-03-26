@@ -19,10 +19,10 @@ class <?php echo $className; ?> extends <?php echo $this->baseClass."\n"; ?>
     <?php foreach ($this->preparedItems as $key => $value) : ?>
 
     /**
-     * @var <?php echo gettype($value); ?> <?php echo $key; ?>
+     * @var <?php echo gettype($value['value']); ?> <?php echo $key; ?>
      
      */
-    const <?php echo $key; ?> = <?php echo gettype($value) == 'string' ? "'" . $value . "'" : $value; ?>;
+     const <?php echo $key; ?> = <?php echo !is_numeric($value['value']) && gettype($value['value']) == 'string' ? "'" . strtolower($value['value']) . "'" : $value['value']; ?>;
     <?php endforeach; ?>
 
 	/**
@@ -34,7 +34,7 @@ class <?php echo $className; ?> extends <?php echo $this->baseClass."\n"; ?>
 	{
 		return  array(
         <?php foreach ($this->preparedItems as $key => $value) : ?>
-            self::<?php echo $key; ?> => <?php echo gettype($value) == 'string' ? "'" . $value . "'" : $value; ?>,
+            self::<?php echo $key; ?> => <?php echo gettype($value['text']) == 'string' ? "'" . $value['text'] . "'" : $value['text']; ?>,
         <?php endforeach; ?>
         );
 	}

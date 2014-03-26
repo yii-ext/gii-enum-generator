@@ -7,9 +7,9 @@
 $class = get_class($model);
 ?>
 
-<h1>Model Generator</h1>
+<h1>Enumerable Generator</h1>
 
-<p>This generator generates a model class for the specified database table.</p>
+<p>This generator generates an enumerable class for the list.</p>
 
 <?php $form = $this->beginWidget('CCodeForm', array('model' => $model)); ?>
 

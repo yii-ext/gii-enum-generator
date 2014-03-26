@@ -51,7 +51,7 @@ class EnumerableCode extends CCodeModel
     public function prepare()
     {
         $className = ucfirst($this->enumerableName);
-        
+
         $params = array(
             'className' => $className,
         );
@@ -87,27 +87,35 @@ class EnumerableCode extends CCodeModel
                 list($value, $item) = explode(':', $item, 2);
                 $key = strtoupper(preg_replace('~\_{2,}~', '_', preg_replace('~[^a-z0-9\_]+~i', '_', $item)));
                 if (!$enteredKeys && !$startPosition) {
-                    $this->addError($attribute, "Wrong input format.");
+                    $this->addError($attribute, "Wrong input format1.");
                     break;
                 } elseif (array_key_exists($key, $this->preparedItems)) {
-                    $this->addError($attribute, "Wrong input format.");
+                    $this->addError($attribute, "Wrong input format2.");
+                    break;
+                } elseif (!preg_match('~^[a-z].*~i', $key)) {
+                    $this->addError($attribute, "Wrong input format3.");
                     break;
                 }
                 $startPosition = false;
                 $enteredKeys = true;
-                $this->preparedItems[$key] = $value;
+                $this->preparedItems[$key] = array('value' => $value, 'text' => $item);
             } else {
                 $key = strtoupper(preg_replace('~\_{2,}~', '_', preg_replace('~[^a-z0-9\_]+~i', '_', $item)));
+
                 if ($enteredKeys && !$startPosition) {
                     $this->addError($attribute, "Wrong input format.");
                     break;
                 } elseif (array_key_exists($key, $this->preparedItems)) {
                     $this->addError($attribute, "Wrong input format.");
                     break;
+                } elseif (!preg_match('~^[a-z].*~i', $key)) {
+                    $this->addError($attribute, "Wrong input format.");
+                    break;
                 }
+
                 $startPosition = false;
                 $enteredKeys = false;
-                $this->preparedItems[$key] = $item;
+                $this->preparedItems[$key] = array('value' => $item, 'text' => $item);
             }
         }
     }
