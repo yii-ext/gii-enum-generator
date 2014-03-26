@@ -8,6 +8,6 @@
 class EnumerableGenerator extends CCodeGenerator
 {
 
-    public $codeModel = 'application.vendor.cod.gii.enumerable.EnumerableCode';
+    public $codeModel = 'application.vendor.cod.yii-ext.gii-enum-generator.enumerable.EnumerableCode';
 
 }
